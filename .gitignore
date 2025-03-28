@@ -1,0 +1,31 @@
+# Node / PHP / Composer
+node_modules/
+vendor/
+
+# Log & temp files
+*.log
+*.bak
+*.tmp
+
+# Editor & OS clutter
+.DS_Store
+.idea/
+.vscode/
+
+# Local environment
+.env
+.env.local
+.env.production
+
+# Runtime / Mounted folders
+invoiceplane_*
+mariadb/
+
+# Docker build logs
+build.log
+build.previous.log
+
+# Composer cache (optional)
+composer.phar
+
+

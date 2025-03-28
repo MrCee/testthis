@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+  <head>
+    <title>InvoicePlane Setup Help</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 2em;
+        background: #f9f9f9;
+        color: #333;
+      }
+      h1 {
+        color: #2b2b2b;
+      }
+      code {
+        background: #eee;
+        padding: 2px 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>👋 Welcome to InvoicePlane DockerX</h1>
+    <p>This container is running, but it hasn't been configured yet.</p>
+    <p>To get started:</p>
+    <ol>
+      <li>
+        Create a <code>.env</code> file with your desired config (see example
+        below)
+      </li>
+      <li>Run the container using <code>docker compose up</code></li>
+      <li>Access the setup at <code>/index.php/setup</code></li>
+    </ol>
+
+    <h2>📄 Sample .env</h2>
+    <pre><code>IP_VERSION=1.6.2
+PHP_VERSION=8.4
+PUID=1000
+PGID=1000
+IP_SOURCE=https://github.com/InvoicePlane/InvoicePlane/releases/download
+...</code></pre>
+
+    <p>
+      📘
+      <a href="https://github.com/MrCee/InvoicePlane-DockerX"
+        >Full Setup Instructions on GitHub</a
+      >
+    </p>
+  </body>
+</html>

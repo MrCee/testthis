@@ -1,0 +1,34 @@
+# Don't copy Git metadata
+.git
+.gitignore
+
+# Node / PHP / Composer
+node_modules/
+vendor/
+
+# Log & temp files
+*.log
+*.bak
+*.tmp
+
+# Editor & OS clutter
+.DS_Store
+.idea/
+.vscode/
+
+# Local config / secrets
+.env
+.env.*
+!.env.example
+docker-compose.yml
+
+# Bind mounts & runtime data
+invoiceplane_*
+mariadb/
+build.log
+build.previous.log
+
+# Optional: build artifacts
+build/
+*.sh~
+

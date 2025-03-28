@@ -1,0 +1,49 @@
+{
+  "name": "mrcee/invoiceplane-dockerx",
+  "description": "InvoicePlane application with updated dependencies",
+  "type": "project",
+  "require": {
+    "pocketarc/codeigniter": "^3.3",
+    "bacon/bacon-qr-code": "^3.0",
+    "composer/composer": "^2.0",
+    "dasprid/enum": "^1.0",
+    "endroid/qr-code": "6.0",
+    "graham-campbell/result-type": "^1.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "moneyphp/money": "^4.6",
+    "mpdf/mpdf": "^8.2",
+    "myclabs/php-enum": "^1.8",
+    "paragonie/sodium_compat": "^2.0",
+    "phpmailer/phpmailer": "^6.0",
+    "phpoption/phpoption": "^1.9",
+    "psr/log": "^3.0",
+    "ralouphie/getallheaders": "^3.0",
+    "setasign/fpdi": "^2.6",
+    "smhg/sepa-qr-data": "^2.0",
+    "stripe/stripe-php": "^16.0",
+    "symfony/var-dumper": "^7.0",
+    "vlucas/phpdotenv": "^5.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "application/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "composer dump-autoload -o"
+    ],
+    "post-update-cmd": [
+      "composer dump-autoload -o"
+    ]
+  },
+  "config": {
+    "platform": {
+      "php": "8.4"
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "stable",
+  "license": "MIT"
+}

@@ -1,0 +1,62 @@
+services:
+  invoiceplane:
+    image: ${IP_IMAGE}:${IP_VERSION}
+    container_name: invoiceplane_app
+    restart: unless-stopped
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        IP_IMAGE: ${IP_IMAGE}
+        IP_VERSION: ${IP_VERSION}
+        IP_SOURCE: ${IP_SOURCE}
+        IP_LANGUAGE: ${IP_LANGUAGE}
+        PHP_VERSION: ${PHP_VERSION}
+        PUID: ${PUID}
+        PGID: ${PGID}
+        BUILD_DATE: ${BUILD_DATE}
+    pull_policy: ${PULL_POLICY:-never}
+    ports:
+      - "${IP_PORT}:80"
+    environment:
+      - IP_URL=${IP_URL}
+      - PHP_VERSION=${PHP_VERSION}
+      - IP_LANGUAGE=${IP_LANGUAGE}
+      - TZ=${TZ}
+      - MYSQL_HOST=${MYSQL_HOST}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_DB=${MYSQL_DATABASE}
+      - MYSQL_PORT=${MYSQL_PORT}
+      - REMOVE_INDEXPHP=${REMOVE_INDEXPHP}
+      - SETUP_COMPLETED=${SETUP_COMPLETED}
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - HOST_OS=${HOST_OS}
+    volumes:
+      - ./invoiceplane_uploads:/var/www/html/uploads
+      - ./invoiceplane_css:/var/www/html/assets/core/css
+      - ./invoiceplane_views:/var/www/html/application/views
+      - ./invoiceplane_language:/var/www/html/application/language/${IP_LANGUAGE}
+
+  mariadb:
+    image: mariadb:${MARIADB_VERSION}
+    container_name: invoiceplane_mariadb
+    hostname: ${MYSQL_HOST}
+    restart: unless-stopped
+    user: ${MYSQL_UID}:${MYSQL_GID}
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    ports:
+      - "${MYSQL_PORT}:3306"
+    networks:
+      default:
+        aliases:
+          - ${MYSQL_HOST}
